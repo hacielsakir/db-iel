@@ -1,23 +1,20 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import InputPage from './Components/InputPage';
+import DownloadPage from './Components/DownloadPage';
 
 function App() {
+
+  const [currentPage, setCurrentPage] = useState('input-page')
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <nav>
+          <a href='#input-page' onClick={() => setCurrentPage('input-page')}>Upload</a>
+          <a href='#download-page' onClick={() => setCurrentPage('download-page')}>Download</a>
+        </nav>
+        {currentPage === 'input-page' && <InputPage/>}
+          {currentPage === 'download-page' && <DownloadPage/>}
     </div>
   );
 }
